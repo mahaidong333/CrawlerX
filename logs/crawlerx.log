@@ -1,0 +1,189 @@
+2025-08-03 21:43:35,905 - engine - INFO - 爬虫引擎已启动
+2025-08-03 21:47:14,009 - engine - INFO - 爬虫引擎已启动
+2025-08-03 21:58:15,283 - plugin_manager - ERROR - 加载插件 basic_spider(0) 失败: module 'plugins.spiders.basic_spider(0)' has no attribute 'Basic_spider(0)'
+2025-08-03 21:58:15,284 - plugin_manager - ERROR - 加载插件 basic_spider 失败: module 'plugins.spiders.basic_spider' has no attribute 'Basic_spider'
+2025-08-03 21:58:15,480 - plugin_manager - ERROR - 加载插件 mysql_storage 失败: module 'plugins.spiders.mysql_storage' has no attribute 'Mysql_storage'
+2025-08-03 21:58:15,481 - plugin_manager - ERROR - 加载插件 requests_spider 失败: module 'plugins.spiders.requests_spider' has no attribute 'Requests_spider'
+2025-08-03 21:58:15,482 - plugin_manager - ERROR - 加载插件 selenium_spider 失败: '(' was never closed (selenium_spider.py, line 26)
+2025-08-03 21:58:15,519 - plugin_manager - ERROR - 加载插件 html_processor 失败: module 'plugins.processors.html_processor' has no attribute 'Html_processor'
+2025-08-03 21:58:15,520 - plugin_manager - ERROR - 加载插件 json_storage(0) 失败: module 'plugins.storages.json_storage(0)' has no attribute 'Json_storage(0)'
+2025-08-03 21:58:15,522 - plugin_manager - ERROR - 加载插件 json_storage 失败: module 'plugins.storages.json_storage' has no attribute 'Json_storage'
+2025-08-03 21:58:15,523 - plugin_manager - ERROR - 加载插件 basic_spider(0) 失败: module 'plugins.spiders.basic_spider(0)' has no attribute 'Basic_spider(0)'
+2025-08-03 21:58:15,523 - plugin_manager - ERROR - 加载插件 basic_spider 失败: module 'plugins.spiders.basic_spider' has no attribute 'Basic_spider'
+2025-08-03 21:58:15,523 - plugin_manager - ERROR - 加载插件 mysql_storage 失败: module 'plugins.spiders.mysql_storage' has no attribute 'Mysql_storage'
+2025-08-03 21:58:15,523 - plugin_manager - ERROR - 加载插件 requests_spider 失败: module 'plugins.spiders.requests_spider' has no attribute 'Requests_spider'
+2025-08-03 21:58:15,524 - plugin_manager - ERROR - 加载插件 selenium_spider 失败: '(' was never closed (selenium_spider.py, line 26)
+2025-08-03 21:58:15,524 - plugin_manager - ERROR - 加载插件 html_processor 失败: module 'plugins.processors.html_processor' has no attribute 'Html_processor'
+2025-08-03 21:58:15,524 - plugin_manager - ERROR - 加载插件 json_storage(0) 失败: module 'plugins.storages.json_storage(0)' has no attribute 'Json_storage(0)'
+2025-08-03 21:58:15,524 - plugin_manager - ERROR - 加载插件 json_storage 失败: module 'plugins.storages.json_storage' has no attribute 'Json_storage'
+2025-08-03 21:58:15,525 - engine - INFO - 爬虫引擎已启动
+2025-08-03 21:58:15,525 - main - INFO - 启动Web服务器...
+2025-08-03 21:58:15,709 - plugin_manager - ERROR - 加载插件 basic_spider(0) 失败: module 'plugins.spiders.basic_spider(0)' has no attribute 'Basic_spider(0)'
+2025-08-03 21:58:15,710 - plugin_manager - ERROR - 加载插件 basic_spider 失败: module 'plugins.spiders.basic_spider' has no attribute 'Basic_spider'
+2025-08-03 21:58:15,902 - plugin_manager - ERROR - 加载插件 mysql_storage 失败: module 'plugins.spiders.mysql_storage' has no attribute 'Mysql_storage'
+2025-08-03 21:58:15,903 - plugin_manager - ERROR - 加载插件 requests_spider 失败: module 'plugins.spiders.requests_spider' has no attribute 'Requests_spider'
+2025-08-03 21:58:15,904 - plugin_manager - ERROR - 加载插件 selenium_spider 失败: '(' was never closed (selenium_spider.py, line 26)
+2025-08-03 21:58:15,940 - plugin_manager - ERROR - 加载插件 html_processor 失败: module 'plugins.processors.html_processor' has no attribute 'Html_processor'
+2025-08-03 21:58:15,941 - plugin_manager - ERROR - 加载插件 json_storage(0) 失败: module 'plugins.storages.json_storage(0)' has no attribute 'Json_storage(0)'
+2025-08-03 21:58:15,942 - plugin_manager - ERROR - 加载插件 json_storage 失败: module 'plugins.storages.json_storage' has no attribute 'Json_storage'
+2025-08-03 21:58:15,943 - plugin_manager - ERROR - 加载插件 basic_spider(0) 失败: module 'plugins.spiders.basic_spider(0)' has no attribute 'Basic_spider(0)'
+2025-08-03 21:58:15,943 - plugin_manager - ERROR - 加载插件 basic_spider 失败: module 'plugins.spiders.basic_spider' has no attribute 'Basic_spider'
+2025-08-03 21:58:15,944 - plugin_manager - ERROR - 加载插件 mysql_storage 失败: module 'plugins.spiders.mysql_storage' has no attribute 'Mysql_storage'
+2025-08-03 21:58:15,944 - plugin_manager - ERROR - 加载插件 requests_spider 失败: module 'plugins.spiders.requests_spider' has no attribute 'Requests_spider'
+2025-08-03 21:58:15,944 - plugin_manager - ERROR - 加载插件 selenium_spider 失败: '(' was never closed (selenium_spider.py, line 26)
+2025-08-03 21:58:15,945 - plugin_manager - ERROR - 加载插件 html_processor 失败: module 'plugins.processors.html_processor' has no attribute 'Html_processor'
+2025-08-03 21:58:15,945 - plugin_manager - ERROR - 加载插件 json_storage(0) 失败: module 'plugins.storages.json_storage(0)' has no attribute 'Json_storage(0)'
+2025-08-03 21:58:15,945 - plugin_manager - ERROR - 加载插件 json_storage 失败: module 'plugins.storages.json_storage' has no attribute 'Json_storage'
+2025-08-03 21:58:15,945 - engine - INFO - 爬虫引擎已启动
+2025-08-03 21:58:15,945 - main - INFO - 启动Web服务器...
+2025-08-03 22:08:43,913 - plugin_manager - ERROR - 加载插件 basic_spider(0) 失败: module 'plugins.spiders.basic_spider(0)' has no attribute 'Basic_spider(0)'
+2025-08-03 22:08:43,914 - plugin_manager - ERROR - 加载插件 basic_spider 失败: module 'plugins.spiders.basic_spider' has no attribute 'Basic_spider'
+2025-08-03 22:08:44,153 - plugin_manager - ERROR - 加载插件 mysql_storage 失败: module 'plugins.spiders.mysql_storage' has no attribute 'Mysql_storage'
+2025-08-03 22:08:44,153 - plugin_manager - ERROR - 加载插件 requests_spider 失败: module 'plugins.spiders.requests_spider' has no attribute 'Requests_spider'
+2025-08-03 22:08:44,154 - plugin_manager - ERROR - 加载插件 selenium_spider 失败: '(' was never closed (selenium_spider.py, line 26)
+2025-08-03 22:08:44,196 - plugin_manager - ERROR - 加载插件 html_processor 失败: module 'plugins.processors.html_processor' has no attribute 'Html_processor'
+2025-08-03 22:08:44,197 - plugin_manager - ERROR - 加载插件 json_storage(0) 失败: module 'plugins.storages.json_storage(0)' has no attribute 'Json_storage(0)'
+2025-08-03 22:08:44,198 - plugin_manager - ERROR - 加载插件 json_storage 失败: module 'plugins.storages.json_storage' has no attribute 'Json_storage'
+2025-08-03 22:08:44,199 - plugin_manager - ERROR - 加载插件 basic_spider(0) 失败: module 'plugins.spiders.basic_spider(0)' has no attribute 'Basic_spider(0)'
+2025-08-03 22:08:44,199 - plugin_manager - ERROR - 加载插件 basic_spider 失败: module 'plugins.spiders.basic_spider' has no attribute 'Basic_spider'
+2025-08-03 22:08:44,199 - plugin_manager - ERROR - 加载插件 mysql_storage 失败: module 'plugins.spiders.mysql_storage' has no attribute 'Mysql_storage'
+2025-08-03 22:08:44,201 - plugin_manager - ERROR - 加载插件 requests_spider 失败: module 'plugins.spiders.requests_spider' has no attribute 'Requests_spider'
+2025-08-03 22:08:44,201 - plugin_manager - ERROR - 加载插件 selenium_spider 失败: '(' was never closed (selenium_spider.py, line 26)
+2025-08-03 22:08:44,202 - plugin_manager - ERROR - 加载插件 html_processor 失败: module 'plugins.processors.html_processor' has no attribute 'Html_processor'
+2025-08-03 22:08:44,202 - plugin_manager - ERROR - 加载插件 json_storage(0) 失败: module 'plugins.storages.json_storage(0)' has no attribute 'Json_storage(0)'
+2025-08-03 22:08:44,202 - plugin_manager - ERROR - 加载插件 json_storage 失败: module 'plugins.storages.json_storage' has no attribute 'Json_storage'
+2025-08-03 22:08:44,202 - engine - INFO - 爬虫引擎已启动
+2025-08-03 22:08:44,202 - main - INFO - 启动Web服务器...
+2025-08-03 22:09:15,657 - engine - INFO - 爬虫引擎已启动
+2025-08-03 22:09:15,657 - main - INFO - 启动Web服务器...
+2025-08-03 22:09:53,387 - engine - INFO - 爬虫引擎已启动
+2025-08-03 22:09:53,387 - main - INFO - 启动Web服务器...
+2025-08-03 22:09:59,061 - engine - INFO - 爬虫引擎已启动
+2025-08-03 22:09:59,067 - main - INFO - 启动Web服务器...
+2025-08-03 22:17:27,306 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:17:27,309 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:17:27,310 - main - INFO - 加载的爬虫插件: []
+2025-08-03 22:17:27,310 - main - ERROR - 未加载任何爬虫插件！请检查插件目录
+2025-08-03 22:17:27,310 - main - INFO - 启动Web服务器...
+2025-08-03 22:17:27,750 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:17:27,753 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:17:27,753 - main - INFO - 加载的爬虫插件: []
+2025-08-03 22:17:27,753 - main - ERROR - 未加载任何爬虫插件！请检查插件目录
+2025-08-03 22:17:27,753 - main - INFO - 启动Web服务器...
+2025-08-03 22:17:58,322 - engine - INFO - 已添加任务: task_1754230678322
+2025-08-03 22:38:22,721 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:38:22,724 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:38:22,724 - main - INFO - 加载的爬虫插件: []
+2025-08-03 22:38:22,724 - main - ERROR - 未加载任何爬虫插件！请检查插件目录
+2025-08-03 22:38:22,724 - main - INFO - 启动Web服务器...
+2025-08-03 22:38:33,564 - json_storage - INFO - 创建数据存储目录: C:\Users\MHD\Desktop\CrawlerX\data
+2025-08-03 22:38:33,574 - json_storage - INFO - 创建数据存储目录: data
+2025-08-03 22:38:33,574 - json_storage - INFO - 创建数据存储目录: data
+2025-08-03 22:38:33,578 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:38:33,578 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:38:33,578 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:38:33,578 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:38:33,578 - main - INFO - 启动Web服务器...
+2025-08-03 22:39:34,960 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:39:34,965 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:39:34,965 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:39:34,965 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:39:34,965 - main - INFO - 启动Web服务器...
+2025-08-03 22:39:54,210 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:39:54,222 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:39:54,222 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:39:54,222 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:39:54,222 - main - INFO - 启动Web服务器...
+2025-08-03 22:40:20,899 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:40:20,902 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:40:20,902 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:40:20,902 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:40:20,902 - main - INFO - 启动Web服务器...
+2025-08-03 22:40:30,697 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:40:30,705 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:40:30,705 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:40:30,705 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:40:30,705 - main - INFO - 启动Web服务器...
+2025-08-03 22:41:05,718 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:41:05,722 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:41:05,722 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:41:05,722 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:41:05,722 - main - INFO - 启动Web服务器...
+2025-08-03 22:41:14,470 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:41:14,477 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:41:14,477 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:41:14,477 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:41:14,479 - main - INFO - 启动Web服务器...
+2025-08-03 22:41:22,108 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:41:22,108 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:41:22,108 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:41:22,108 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:41:22,108 - main - INFO - 启动Web服务器...
+2025-08-03 22:42:31,864 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:42:31,868 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:42:31,868 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:42:31,868 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:42:31,868 - main - INFO - 启动Web服务器...
+2025-08-03 22:42:44,965 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:42:44,975 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:42:44,975 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:42:44,975 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:42:44,975 - main - INFO - 启动Web服务器...
+2025-08-03 22:43:08,481 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:43:08,483 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:43:08,483 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:43:08,483 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:43:08,483 - main - INFO - 启动Web服务器...
+2025-08-03 22:43:14,107 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:43:14,107 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:43:14,107 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:43:14,107 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:43:14,107 - main - INFO - 启动Web服务器...
+2025-08-03 22:44:03,604 - engine - INFO - 已添加任务: task_1754232243604
+2025-08-03 22:45:00,608 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:45:00,612 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:45:00,612 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:45:00,612 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:45:00,612 - main - INFO - 启动Web服务器...
+2025-08-03 22:45:01,031 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:45:01,034 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:45:01,034 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:45:01,035 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:45:01,035 - main - INFO - 启动Web服务器...
+2025-08-03 22:45:28,012 - engine - INFO - 已添加任务: task_1754232328012
+2025-08-03 22:50:51,216 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:50:51,219 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:50:51,219 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:50:51,220 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:50:51,220 - main - INFO - 启动Web服务器...
+2025-08-03 22:51:23,680 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:51:23,681 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:51:23,681 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:51:23,681 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:51:23,683 - main - INFO - 启动Web服务器...
+2025-08-03 22:52:31,018 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:52:31,018 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:52:31,018 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:52:31,018 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:52:31,023 - main - INFO - 启动Web服务器...
+2025-08-03 22:53:38,828 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:53:38,831 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:53:38,831 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:53:38,831 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:53:38,832 - main - INFO - 启动Web服务器...
+2025-08-03 22:56:14,692 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:56:14,695 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:56:14,695 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:56:14,695 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:56:14,695 - main - INFO - 启动Web服务器...
+2025-08-03 22:56:23,388 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:56:23,390 - main - INFO - 爬虫引擎已启动
+2025-08-03 22:56:23,390 - main - INFO - 加载的爬虫插件: ['basic_spider', 'requests_spider']
+2025-08-03 22:56:23,390 - main - INFO - 共加载 2 个爬虫插件
+2025-08-03 22:56:23,390 - main - INFO - 启动Web服务器...
+2025-08-03 22:56:41,903 - main - INFO - 启动爬虫引擎...
+2025-08-03 22:56:41,913 - main - INFO - 爬虫引擎已启动
+2025-08-03 23:07:19,203 - main - INFO - 启动爬虫引擎...
+2025-08-03 23:07:19,203 - main - INFO - 爬虫引擎已启动
+2025-08-03 23:07:43,419 - main - INFO - 启动爬虫引擎...
+2025-08-03 23:07:43,423 - main - INFO - 爬虫引擎已启动

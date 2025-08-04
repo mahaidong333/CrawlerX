@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>任务详情 - {{ task.id }} - CrawlerX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .card-header {
+            font-weight: bold;
+        }
+        .result-row:hover {
+            background-color: #f8f9fa;
+        }
+        .copy-btn {
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">CrawlerX 爬虫系统</a>
+            <a class="btn btn-outline-light" href="/">
+                <i class="bi bi-arrow-left"></i> 返回控制台
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>任务详情: {{ task.id }}</h1>
+            <div>
+                <span class="badge 
+                    {% if task.status == 'completed' %}bg-success
+                    {% elif task.status == 'running' %}bg-warning
+                    {% elif task.status == 'failed' %}bg-danger
+                    {% else %}bg-secondary{% endif %} fs-6">
+                    {{ task.status|upper }}
+                </span>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <i class="bi bi-info-circle"></i> 任务信息
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p><strong><i class="bi bi-bug"></i> 爬虫类型:</strong> {{ task.spider }}</p>
+                        <p><strong><i class="bi bi-clock"></i> 创建时间:</strong> {{ task.created_at|format_datetime }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong><i class="bi bi-play-circle"></i> 开始时间:</strong> 
+                            {% if task.start_time %}
+                                {{ task.start_time|format_datetime }}
+                            {% else %}
+                                等待中
+                            {% endif %}
+                        </p>
+                        <p><strong><i class="bi bi-stop-circle"></i> 结束时间:</strong> 
+                            {% if task.end_time %}
+                                {{ task.end_time|format_datetime }}
+                            {% else %}
+                                进行中
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <p><strong><i class="bi bi-link-45deg"></i> 目标URL列表:</strong></p>
+                    <div class="list-group">
+                        {% for url in task.urls %}
+                        <a href="{{ url }}" target="_blank" class="list-group-item list-group-item-action">
+                            <i class="bi bi-globe"></i> {{ url|truncate(80) }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                {% if task.error %}
+                <div class="alert alert-danger mt-3">
+                    <strong><i class="bi bi-exclamation-triangle"></i> 错误信息:</strong>
+                    <pre class="mt-2">{{ task.error }}</pre>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <i class="bi bi-collection"></i> 采集结果 ({{ task.results|length }} 条)
+            </div>
+            <div class="card-body">
+                {% if task.results %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>标题</th>
+                                <th>状态</th>
+                                <th>采集时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+
+                    <!-- 在结果表格中添加更多细节 -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>标题</th>
+                                <th>状态</th>
+                                <th>采集时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for result in task.results %}
+                            <tr class="result-row">
+                                <td>
+                                    <a href="{{ result.url }}" target="_blank" title="{{ result.url }}">
+                                        {{ result.url|truncate(40) }}
+                                    </a>
+                                </td>
+                                <td>{{ result.title|default('无标题', true)|truncate(30) }}</td>
+                                <td>
+                                    <span class="badge 
+                                        {% if result.status == 'success' %}bg-success
+                                        {% else %}bg-danger{% endif %}">
+                                        {{ result.status|upper }}
+                                    </span>
+                                </td>
+                                <td>{{ result.timestamp|format_datetime }}</td>
+                                <td>
+                                    <i class="bi bi-clipboard copy-btn" 
+                                       data-bs-toggle="tooltip" 
+                                       title="复制URL"
+                                       data-clipboard-text="{{ result.url }}"></i>
+                
+                                    <!-- 添加详情查看按钮 -->
+                                    <i class="bi bi-eye view-details-btn ms-2" 
+                                       data-bs-toggle="modal" 
+                                       data-bs-target="#resultDetailsModal"
+                                       data-result="{{ result | tojson | forceescape }}"></i>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">暂无采集结果</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-inbox" style="font-size: 3rem; color: #6c757d;"></i>
+                    <h4 class="mt-3">暂无采集结果</h4>
+                    <p class="text-muted">该任务尚未产生任何采集结果</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 添加结果详情模态框 -->
+    <div class="modal fade" id="resultDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">采集结果详情</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <strong>URL:</strong>
+                        <div class="border rounded p-2 bg-light">
+                            <span id="detail-url"></span>
+                            <button class="btn btn-sm btn-outline-secondary copy-btn" 
+                                    data-clipboard-target="#detail-url">
+                                <i class="bi bi-clipboard"></i> 复制
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <strong>状态:</strong>
+                        <span id="detail-status" class="badge"></span>
+                    </div>
+                
+                    <div class="mb-3">
+                        <strong>标题:</strong>
+                        <div id="detail-title" class="border rounded p-2 bg-light"></div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <strong>内容预览:</strong>
+                        <div id="detail-content" class="border rounded p-2 bg-light" style="max-height: 300px; overflow: auto;"></div>
+                    </div>
+                
+                    <div class="mb-3" id="error-section" style="display: none;">
+                        <strong>错误信息:</strong>
+                        <div id="detail-error" class="border rounded p-2 bg-light text-danger"></div>
+                    </div>
+                
+                    <div class="mb-3" id="links-section" style="display: none;">
+                        <strong>提取的链接 ({{ result.links|length }}):</strong>
+                        <div id="detail-links" class="border rounded p-2 bg-light" style="max-height: 200px; overflow: auto;"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // 添加详情查看功能
+    document.querySelectorAll('.view-details-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const resultData = JSON.parse(this.getAttribute('data-result'));
+            
+            // 填充模态框内容
+            document.getElementById('detail-url').textContent = resultData.url;
+            document.getElementById('detail-status').textContent = resultData.status.toUpperCase();
+            document.getElementById('detail-status').className = resultData.status === 'success' 
+                ? 'badge bg-success' : 'badge bg-danger';
+            
+            document.getElementById('detail-title').textContent = resultData.title || '无标题';
+            document.getElementById('detail-content').textContent = resultData.content || '无内容';
+            
+            // 显示错误信息（如果有）
+            const errorSection = document.getElementById('error-section');
+            const errorDiv = document.getElementById('detail-error');
+            if (resultData.error) {
+                errorDiv.textContent = resultData.error;
+                errorSection.style.display = 'block';
+            } else {
+                errorSection.style.display = 'none';
+            }
+            
+            // 显示链接（如果有）
+            const linksSection = document.getElementById('links-section');
+            const linksDiv = document.getElementById('detail-links');
+            if (resultData.links && resultData.links.length > 0) {
+                linksDiv.innerHTML = '';
+                resultData.links.forEach(link => {
+                    const linkEl = document.createElement('div');
+                    linkEl.className = 'mb-2';
+                    linkEl.innerHTML = `
+                        <a href="${link.url}" target="_blank">${link.text || '无文本'}</a>
+                        <span class="text-muted">${link.url}</span>
+                    `;
+                    linksDiv.appendChild(linkEl);
+                });
+                linksSection.style.display = 'block';
+            } else {
+                linksSection.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 初始化工具提示
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => 
+            new bootstrap.Tooltip(tooltipTriggerEl));
+        
+        // 复制功能
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.getAttribute('data-clipboard-text');
+                navigator.clipboard.writeText(text).then(() => {
+                    const tooltip = bootstrap.Tooltip.getInstance(this);
+                    const originalTitle = this.getAttribute('data-bs-original-title');
+                    this.setAttribute('data-bs-original-title', '已复制!');
+                    tooltip.show();
+                    
+                    setTimeout(() => {
+                        this.setAttribute('data-bs-original-title', originalTitle);
+                        tooltip.hide();
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

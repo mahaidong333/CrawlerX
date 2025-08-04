@@ -1,0 +1,9 @@
+访问 http://localhost:5000
+
+点击 "Create Task"
+
+选择爬虫类型（Requests/Selenium/Playwright等）
+
+输入目标URL和提取规则
+
+提交任务

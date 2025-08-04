@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrawlerX - 智能爬虫系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CrawlerX</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/create-task">创建任务</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>智能网络爬虫平台</h2>
+            <p>使用我们的强大爬虫系统自动化数据采集</p>
+            <a href="/create-task" class="btn">开始爬取</a>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <h3>多源支持</h3>
+                <p>支持静态页面、动态网站、API接口等多种数据源</p>
+            </div>
+            <div class="feature-card">
+                <h3>智能处理</h3>
+                <p>自动数据提取、清洗和转换</p>
+            </div>
+            <div class="feature-card">
+                <h3>可视化操作</h3>
+                <p>简单易用的Web界面管理爬虫任务</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 CrawlerX - 智能爬虫系统</p>
+        </div>
+    </footer>
+</body>
+</html>

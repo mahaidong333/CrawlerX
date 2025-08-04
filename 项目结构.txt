@@ -1,0 +1,39 @@
+crawlerx/
+├── core/                   # 核心引擎
+│   ├── engine.py           # 任务调度引擎
+│   ├── plugin_manager.py   # 插件管理系统
+│   ├── task_manager.py     # 任务管理系统
+│   └── distributed.py      # 分布式支持
+├── plugins/                # 插件系统
+│   ├── spiders/            # 爬虫插件
+│   │   ├── requests_spider.py
+│   │   ├── selenium_spider.py
+│   │   ├── playwright_spider.py
+│   │   └── scrapy_spider.py
+│   ├── processors/         # 数据处理插件
+│   │   ├── html_parser.py
+│   │   ├── json_processor.py
+│   │   └── media_processor.py
+│   ├── storages/           # 存储插件
+│   │   └── mysql_storage.py
+│   └── verifications/      # 验证插件
+│       └── captcha_solver.py
+├── web/                    # Web界面
+│   ├── app.py              # Flask应用
+│   ├── templates/          # HTML模板
+│   │   ├── index.html
+│   │   └── dashboard.html
+│   └── static/             # 静态资源
+│       ├── css/
+│       └── js/
+├── config/                 # 配置文件
+│   ├── settings.py
+│   └── constants.py
+├── tasks/                  # 爬虫任务定义
+│   └── example_task.py
+├── utils/                  # 工具函数
+│   ├── logger.py
+│   └── common.py
+├── requirements.txt        # 依赖文件
+├── run.py                  # 启动入口
+└── README.md               # 项目文档
