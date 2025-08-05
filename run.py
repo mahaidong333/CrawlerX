@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+from utils.logger import setup_logging
 
 # 配置日志
 logging.basicConfig(
@@ -38,10 +39,13 @@ def main():
     # 创建引擎实例
     engine = CrawlerEngine()
     logger.info(f"Engine instance created: {id(engine)}")
-    
+    setup_logging()
+    # from web.app import app
     # 初始化 Web 界面并传递引擎实例
     logger.info("Initializing web interface...")
     initialize_web(engine)  # 使用重命名后的函数
+
+    app.run(host='0.0.0.0', port=5000, debug=True)
     
     # 列出所有可用的爬虫插件
     try:
@@ -56,3 +60,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+   
+    
+    

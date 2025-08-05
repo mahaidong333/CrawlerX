@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, jsonify
 from core.task_manager import TaskManager  # 导入 TaskManager
 from core.engine import CrawlerEngine
 import os
+from flask import g
 
 
 # 初始化应用
@@ -71,11 +72,11 @@ def format_duration(duration):
     """格式化时间间隔"""
     if not isinstance(duration, timedelta):
         return "N/A"
-    
+
     total_seconds = int(duration.total_seconds())
     hours, remainder = divmod(total_seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
-    
+
     parts = []
     if hours:
         parts.append(f"{hours}小时")
@@ -83,7 +84,7 @@ def format_duration(duration):
         parts.append(f"{minutes}分钟")
     if seconds or not parts:
         parts.append(f"{seconds}秒")
-    
+
     return " ".join(parts)
 
 # 注册模板过滤器
@@ -101,7 +102,7 @@ def initialize_web(engine_instance):
     global engine
     engine = engine_instance
     logger.info("Web 界面已初始化")
-    
+
     # 确保任务处理线程正确启动
 def task_worker():
     """任务处理工作线程"""
@@ -112,27 +113,41 @@ def task_worker():
             task_id = engine.task_queue.get()
             if task_id is None:  # 安全退出机制
                 break
-                
+
             logger.info(f"开始处理任务: {task_id}")
-            
+
             # 更新任务状态为运行中
             engine._update_task_status(task_id, "RUNNING", "正在执行")
-            
+
             # 执行任务
             engine.execute_task(task_id)
-            
+
             logger.info(f"任务完成: {task_id}")
-            
+
         except Exception as e:
             logger.error(f"任务处理异常: {str(e)}")
             import traceback
             logger.error(traceback.format_exc())
-            
+
         finally:
             engine.task_queue.task_done()
 
 
 @app.before_request
+def before_request():
+    if 'engine' not in g:
+        g.engine = CrawlerEngine()
+
+@app.route('/run_task', methods=['POST'])
+def run_task():
+    task_config = request.json
+    try:
+        result = g.engine.execute_task(task_config)
+        return jsonify({"status": "running", "task_id": "task_123"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 def check_engine_initialized():
     """确保引擎已初始化"""
     if engine is None and request.endpoint not in ['static', 'health']:
@@ -143,23 +158,23 @@ def dashboard():
     """仪表盘视图"""
     # 获取任务摘要
     summary = task_manager.get_task_summary()
-    
+
     # 获取已完成和运行中的任务详情
     completed_tasks = []
     running_tasks = []
-    
+
     # 遍历所有任务目录
     for task_id in os.listdir(task_manager.data_dir):
         task_dir = os.path.join(task_manager.data_dir, task_id)
         if not os.path.isdir(task_dir):
             continue
-            
+
         # 加载任务状态
         status_file = os.path.join(task_dir, "status.json")
         if os.path.exists(status_file):
             with open(status_file, "r") as f:
                 task_status = json.load(f)
-                
+
             # 确保结果计数是整数
             result_count = task_status.get("result_count", 0)
             if not isinstance(result_count, (int, float)):
@@ -167,7 +182,7 @@ def dashboard():
                     result_count = int(result_count)
                 except (TypeError, ValueError):
                     result_count = 0
-            
+
             task_info = {
                 "id": task_id,
                 "name": task_status.get("name", "未命名任务"),
@@ -176,12 +191,12 @@ def dashboard():
                 "created": task_status.get("created_time", ""),
                 "updated": task_status.get("update_time", "")
             }
-            
+
             if task_status["status"] == "COMPLETED":
                 completed_tasks.append(task_info)
             elif task_status["status"] == "RUNNING":
                 running_tasks.append(task_info)
-    
+
     return render_template('dashboard.html',
                            summary=summary,
                            completed_tasks=completed_tasks,
@@ -201,22 +216,22 @@ def create_task():
             # 类型验证
             if not isinstance(headers, dict):
                 raise ValueError("请求头必须是字典对象")
-                
+
             # 值类型验证
             for key, value in headers.items():
                 if not isinstance(value, str):
                     raise ValueError(
                         f"请求头值类型错误: 键 '{key}' 的值必须是字符串类型"
                     )
-                    
+
         """创建新爬虫任务"""
         if request.method == 'GET':
             return render_template('create_task.html')
-    
+
         # 处理表单提交
         spider_name = request.form['spider']
         urls = [url.strip() for url in request.form['urls'].split('\n') if url.strip()]
-    
+
         # 构建配置
         config = {}
         headers_value = request.form.get('headers', '').strip()
@@ -228,13 +243,13 @@ def create_task():
                     "status": "error",
                     "message": f"无效的请求头JSON格式: {str(e)}"
                 }), 400
-    
+
         if request.form.get('timeout'):
             try:
                 config['timeout'] = int(request.form['timeout'])
             except ValueError:
                 pass
-    
+
         # 创建任务
         task_id = engine.create_task(spider_name, urls, config)
         return jsonify({
@@ -242,7 +257,7 @@ def create_task():
             "task_id": task_id,
             "message": f"任务已创建，正在处理 {len(urls)} 个URL"
         })
-        
+
     except json.JSONDecodeError as e:
             # 精准定位错误位置
             error_line = e.doc.splitlines()[e.lineno - 1]
@@ -282,10 +297,10 @@ def download_results(task_id):
     task = engine.get_task_status(task_id)
     if "error" in task:
         return jsonify({"error": "任务未找到"}), 404
-    
+
     if task["status"] != "completed":
         return jsonify({"error": "任务未完成"}), 400
-    
+
     # 在实际应用中，这里应该生成文件
     return jsonify({
         "status": "success",
@@ -305,32 +320,32 @@ def execute_task(self, task_id):
         """执行爬虫任务"""
         try:
             self.logger.info(f"开始执行任务: {task_id}")
-            
+
             # 加载任务配置
             task_config = self._load_task_config(task_id)
             self.logger.debug(f"任务配置: {task_config}")
-            
+
             # 获取爬虫类
             spider_name = task_config.get("spider", "basic").strip().lower()
             spider_cls = self.plugin_manager.get_spider(spider_name)
-            
+
             if not spider_cls:
                 error_msg = f"爬虫 '{spider_name}' 未找到"
                 self.logger.error(error_msg)
                 raise ValueError(error_msg)
-            
+
             # 添加任务ID到配置
             task_config["task_id"] = task_id
-            
+
             # 实例化并运行爬虫
             spider = spider_cls(task_config)
             result_count = spider.run()
-            
+
             self.logger.info(f"任务完成: {task_id}, 结果数: {result_count}")
-            
+
             # 更新任务状态
             self._update_task_status(task_id, "COMPLETED", f"抓取完成，共 {result_count} 条结果")
-            
+
         except Exception as e:
             self.logger.error(f"任务失败: {task_id}\n{str(e)}\n{traceback.format_exc()}")
             self._update_task_status(task_id, "FAILED", str(e))

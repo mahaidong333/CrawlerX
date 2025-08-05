@@ -1,53 +1,14 @@
-import requests
-from bs4 import BeautifulSoup
-import logging
-from core.spider import Spider
+from core.base_plugin import BasePlugin
 
-class BasicSpider:
-    plugin_type = "spider"
-    name = "basic"  # 确保有这个属性
-    def __init__(self):
+
+class BasicSpider(BasePlugin):
+    plugin_name = "basic"
+
+    def __init__(self, config=None):
         super().__init__(config)
-        self.logger = logging.getLogger("BasicSpider")
-        self.session = requests.Session()
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-        }
-
 
     def run(self):
-        """基础爬虫实现"""
-        print(f"基础爬虫开始运行: {self.config['url']}")
-        
-        try:
-            # 添加超时设置和异常处理
-            response = requests.get(
-                self.config['url'],
-                headers=self.config.get('headers', {}),
-                timeout=10
-            )
-            response.raise_for_status()
-            
-            # 解析HTML内容
-            soup = BeautifulSoup(response.text, 'html.parser')
-            results = []
-            
-            # 提取所有链接
-            for link in soup.find_all('a', href=True):
-                results.append({
-                    "url": link['href'],
-                    "text": link.get_text(strip=True)
-                })
-            
-            # 保存结果并返回计数
-            return self.save_results(results)
-            
-        except requests.exceptions.RequestException as e:
-            print(f"请求失败: {str(e)}")
-            return self.save_results(0)
-        except Exception as e:
-            print(f"解析失败: {str(e)}")
-            return self.save_results(0)
+        return {"status": "success", "data": []}
 
     
     def setup(self, config=None):
